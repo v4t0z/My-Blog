@@ -1,0 +1,114 @@
+:root {
+  --bg: #ffffff;
+  --text: #111111;
+  --link: #000000;
+}
+
+[data-theme="dark"] {
+  --bg: #0f0f0f;
+  --text: #f5f5f5;
+  --link: #ffffff;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  margin-bottom: 3rem;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.navbar a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.navbar a.active {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  font-weight: 600;
+}
+
+.home-link {
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+#theme-toggle {
+  background: transparent;
+  border: none;
+  color: var(--text);
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+#theme-toggle:hover {
+  opacity: 0.75;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  max-width: 900px;
+  margin: 0 auto;
+  /* padding: 2rem; */
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+section {
+  margin: 4rem 0;
+}
+
+main {
+  flex: 1;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+}
+
+a {
+  text-decoration: underline;
+  color: var(--link);
+}
+
+#myBtn {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: var(--bg); /* Set a background color */
+  color: var(--link); /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 10px; /* Some padding */
+  border-radius: 10px; /* Rounded corners */
+  font-size: 18px; /* Increase font size */
+}
+
+#myBtn:hover {
+  background-color: #555; /* Add a dark-grey background on hover */
+}
+
+footer {
+  margin: 6rem 0 2rem;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
