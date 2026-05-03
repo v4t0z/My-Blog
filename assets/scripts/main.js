@@ -35,13 +35,16 @@ navLinks.forEach((link) => {
   }
 });
 
-// Get the button:
-let mybutton = document.getElementById("myBtn");
 
-// When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function () {
-  scrollFunction();
-};
+// ===============================
+// BACK TO TOP BUTTON (FIXED)
+// ===============================
+
+// Get the button:
+const mybutton = document.getElementById("myBtn");
+
+// Show / hide button on scroll
+window.addEventListener("scroll", scrollFunction);
 
 function scrollFunction() {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
@@ -51,8 +54,33 @@ function scrollFunction() {
   }
 }
 
-// When the user clicks on the button, scroll to the top of the document
-function topFunction() {
-  document.body.scrollTop = 0; // For Safari
-  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+// Smooth + slow scroll to top
+if (mybutton) {
+  mybutton.addEventListener("click", scrollToTop);
+}
+
+function scrollToTop() {
+  const start = document.documentElement.scrollTop || document.body.scrollTop;
+  const duration = 50; // büyüt = daha yavaş
+  const startTime = performance.now();
+
+  function easeOutCubic(t) {
+    return 1 - Math.pow(1 - t, 3);
+  }
+
+  function animateScroll(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+
+    const eased = easeOutCubic(progress);
+
+    document.documentElement.scrollTop = start * (1 - eased);
+    document.body.scrollTop = start * (1 - eased);
+
+    if (progress < 1) {
+      requestAnimationFrame(animateScroll);
+    }
+  }
+
+  requestAnimationFrame(animateScroll);
 }
